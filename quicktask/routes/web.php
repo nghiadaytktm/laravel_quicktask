@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,7 +9,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::pattern('id', '[0-9]+');
+Route::pattern('locale', '[a-z0-9]+');
+Route::resource('task','Index\ResourceController');
+Route::get('locale','Index\LanguageController@index');
+Route::get('locale/{locale}','Index\LanguageController@switchLanguage');
